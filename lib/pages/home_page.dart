@@ -12,10 +12,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         title: Text(
           "facebook",
           style: TextStyle(
@@ -26,14 +26,14 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: Icon(Icons.search),
-            color: Colors.grey[800],
+            color: Colors.grey[500],
             onPressed: () {
               print("sfgsf");
             },
           ),
           IconButton(
             icon: Icon(Icons.camera_alt),
-            color: Colors.grey[800],
+            color: Colors.grey[500],
             onPressed: () {
               print("sfgsf");
             },
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           //post create
           Container(
             height: 120,
-            color: Colors.white,
+            color: Colors.black,
             padding: EdgeInsets.only(top: 10, left: 10, right: 10),
             child: Column(
               children: [
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                               // yo'qotish un kk bu
                               border: InputBorder.none,
                               hintStyle: TextStyle(
-                                color: Colors.grey[700]!,
+                                color: Colors.grey[500]!,
                               ),
                             ),
                           ),
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
             height: 200,
             margin: EdgeInsets.only(top: 10),
             padding: EdgeInsets.only(top: 10, bottom: 10),
-            color: Colors.white,
+            color: Colors.black,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -204,26 +204,34 @@ class _HomePageState extends State<HomePage> {
 
           //post feed
           makeFeed(
-              userName: "User Two",
-              userImage: "assets/images/user_2.jpeg",
-              feedTime: "1 hr age",
-              feedText:
-                  "baipebfajf dfvadfv dfvbsfs dafafa adfaraf argqaergqa argqaregqer aregqaer",
-              feedImage: "assets/images/story_3.jpeg"),
+            userName: "User Two",
+            userImage: "assets/images/user_2.jpeg",
+            feedTime: "1 hr age",
+            feedText:
+                "baipebfajf dfvadfv dfvbsfs dafafa adfaraf argqaergqa argqaregqer aregqaer",
+            feedImage: "assets/images/story_3.jpeg",
+            img1: "assets/images/user_2.jpeg",
+            img2: "assets/images/user_3.jpeg",
+          ),
           makeFeed(
               userName: "User three",
               userImage: "assets/images/user_3.jpeg",
               feedTime: "1 hr age",
               feedText:
                   "baipebfajf dfvadfv dfvbsfs dafafa adfaraf argqaergqa argqaregqer aregqaer",
-              feedImage: "assets/images/story_4.jpeg"),
+              feedImage: "assets/images/story_4.jpeg",
+            img1: "assets/images/story_5.jpeg",
+            img2: "assets/images/user_2.jpeg",),
+
           makeFeed(
               userName: "User four",
               userImage: "assets/images/user_4.jpeg",
               feedTime: "1 hr age",
               feedText:
                   "baipebfajf dfvadfv dfvbsfs dafafa adfaraf argqaergqa argqaregqer aregqaer",
-              feedImage: "assets/images/story_5.jpeg"),
+              feedImage: "assets/images/story_5.jpeg",
+            img1: "assets/images/story_1.jpeg",
+            img2: "assets/images/user_3.jpeg",),
         ],
       ),
     );
@@ -278,10 +286,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget makeFeed({userName, userImage, feedTime, feedText, feedImage}) {
+  Widget makeFeed(
+      {userName, userImage, feedTime, feedText, feedImage, img1, img2}) {
     return Container(
       margin: EdgeInsets.only(top: 20),
-      color: Colors.white,
+      color: Colors.black,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -366,12 +375,34 @@ class _HomePageState extends State<HomePage> {
           ),
           //photo
           Container(
-              height: 240,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage(feedImage),
-                fit: BoxFit.cover,
-              ))),
+            height: 240,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 240,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(img1),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    height: 240,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(img2),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
 
           SizedBox(
             height: 20,
